@@ -1,0 +1,18 @@
+{% extends 'shared/base.html' %}
+
+{% load static %}
+
+{% block title %}Home - My Django Site{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'home/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+<p>Welcome to the home page!</p>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'home/home.js' %}"></script>
+{% endblock %}
