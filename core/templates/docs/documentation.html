@@ -2677,24 +2677,24 @@
                         <p> Add the following script files in &lt;body&gt;. </p>
                         <textarea class="multiple-codes">
     <script src="path-to/node_modules/codemirror/lib/codemirror.js"></script>
-    <script src="path-to/node_modules/codemirror/mode/javascript/javascript.js"></script></textarea>
-                        <p> Here is an example of an editor using CodeMirror. </p>
-                        <textarea class="multiple-codes">
-    <textarea rows="4" cols="50" name="code-editable" id="code-editable">
-      <script>
-      var x = 3;
-      var y = 4;
-      var z = x + y;
-      </script>
-    &lt;/textarea&gt;
-    
-    <script>
-      var editableCodeMirror = CodeMirror.fromTextArea(document.getElementById('code-editable'), {
-          mode: "javascript",
-          theme: "ambiance",
-          lineNumbers: true
-      });
-    </script></textarea>
+                <script src="path-to/node_modules/codemirror/mode/javascript/javascript.js"></script></textarea>
+                                    <p> Here is an example of an editor using CodeMirror. </p>
+                                    <textarea class="multiple-codes">
+                <textarea rows="4" cols="50" name="code-editable" id="code-editable">
+                  <script>
+                  var x = 3;
+                  var y = 4;
+                  var z = x + y;
+                  </script>
+                &lt;/textarea&gt;
+                
+                <script>
+                  var editableCodeMirror = CodeMirror.fromTextArea(document.getElementById('code-editable'), {
+                      mode: "javascript",
+                      theme: "ambiance",
+                      lineNumbers: true
+                  });
+                </script></textarea>
                       </div>
                       <!--  CodeMirror Ends -->
                     </div>
