@@ -21,7 +21,7 @@
   <a href="https://github.com/guedes-jr/django-bootstrapp-corona/stargazers">
     <img alt="GitHub stars" src="https://img.shields.io/github/stars/guedes-jr/django-bootstrapp-corona">
   </a>
-  <a href="https://github.com/guedes-jr/django-bootstrapp-corona/blob/main/LICENSE">
+  <a href="https://github.com/guedes-jr/django-bootstrapp-corona/blob/main/LICENSE.txt">
     <img alt="GitHub license" src="https://img.shields.io/github/license/guedes-jr/django-bootstrapp-corona">
   </a>
 </p>
