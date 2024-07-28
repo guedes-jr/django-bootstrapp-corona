@@ -79,7 +79,78 @@ source venv/bin/activate  # No Windows use `venv\Scripts\activate`
 # Instalar dependências necessárias para execução do projeto
 pip install -r requirements.txt
 ```
+### Caso queira alterar o nome do projeto de corona para outro
+O Django não conseguirá encontrar um módulo chamado `corona`. Se você renomeou a pasta do projeto, precisa garantir que todas as referências internas ao nome antigo sejam atualizadas para o novo nome do projeto.
 
+#### Passo 1: Verificar o arquivo `settings.py`
+
+1. **Abrir o arquivo `settings.py`** no diretório do seu projeto e verificar a configuração `ROOT_URLCONF`:
+    ```python
+    ROOT_URLCONF = 'novo_nome_projeto.urls'
+    ```
+
+#### Passo 2: Verificar `wsgi.py` e `asgi.py`
+
+1. **Abrir `wsgi.py`** no diretório do seu projeto e verificar se `os.environ.setdefault` está correto:
+    ```python
+    import os
+    from django.core.wsgi import get_wsgi_application
+
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'novo_nome_projeto.settings')
+    application = get_wsgi_application()
+    ```
+
+2. **Abrir `asgi.py`** (se estiver usando ASGI) e verificar se `os.environ.setdefault` está correto:
+    ```python
+    import os
+    from django.core.asgi import get_asgi_application
+
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'novo_nome_projeto.settings')
+    application = get_asgi_application()
+    ```
+
+#### Passo 3: Verificar `urls.py`
+
+1. **Abrir `urls.py`** no diretório do seu projeto e garantir que todas as importações estão corretas e não referenciam o nome antigo do projeto.
+
+#### Passo 4: Verificar `manage.py`
+
+1. **Abrir `manage.py`** no diretório raiz do seu projeto e garantir que `os.environ.setdefault` está correto:
+    ```python
+    import os
+    import sys
+
+    if __name__ == "__main__":
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "novo_nome_projeto.settings")
+        try:
+            from django.core.management import execute_from_command_line
+        except ImportError as exc:
+            raise ImportError(
+                "Couldn't import Django. Are you sure it's installed and "
+                "available on your PYTHONPATH environment variable? Did you "
+                "forget to activate a virtual environment?"
+            ) from exc
+        execute_from_command_line(sys.argv)
+    ```
+
+#### Passo 5: Verificar `__init__.py`
+
+1. **Abrir `__init__.py`** no diretório do seu projeto (se existir) e garantir que não há referências ao nome antigo do projeto.
+
+#### Passo 6: Atualizar os módulos instalados
+
+1. **Certificar-se de que todas as dependências estão instaladas**:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+#### Passo 7: Verificar e corrigir migrações
+
+1. **Verificar se alguma migração está referenciando o nome antigo do projeto** e corrigir se necessário.
+
+```sh
+python manage.py runserver
+```
 ## 📁 Estrutura de Pastas
 
 ```plaintext
